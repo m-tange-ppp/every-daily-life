@@ -7,10 +7,25 @@ function Sidebar() {
     <div>
       <nav>
         <ul className="space-y-2 w-40">
-          {/* デバッグ用サインアップ */}
+          {/* デバッグ用 */}
           <li>
             <Link href={"/login"} className="inline-flex items-center gap-2">
+              <span>ログイン</span>
+            </Link>
+          </li>
+
+          <li>
+            <Link href={"/signup"} className="inline-flex items-center gap-2">
               <span>サインアップ</span>
+            </Link>
+          </li>
+
+          <li>
+            <Link
+              href={"/createuser"}
+              className="inline-flex items-center gap-2"
+            >
+              <span>ユーザー作成</span>
             </Link>
           </li>
 

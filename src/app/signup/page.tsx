@@ -1,4 +1,4 @@
-import { login } from "@/actions/auth";
+import { signup } from "@/actions/auth";
 
 export default function LoginPage() {
   return (
@@ -11,7 +11,11 @@ export default function LoginPage() {
         <label htmlFor="password">パスワード:</label>
         <input id="password" name="password" type="password" required />
       </div>
-      <button formAction={login}>Log in</button>
+      <div>
+        <label htmlFor="name">あなたの名前:</label>
+        <input id="name" name="name" type="text" required />
+      </div>
+      <button formAction={signup}>Sign up</button>
     </form>
   );
 }
