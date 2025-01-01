@@ -34,9 +34,11 @@ export default function RootLayout({
             <Link href={"/"}>Every Daily Life</Link>
           </h1>
         </header>
-        <div className="flex container  mx-auto">
-          <Sidebar />
-          <main className="flex-grow">{children}</main>
+        <div className="container mx-auto">
+          <div className="flex mx-4">
+            <Sidebar />
+            <main className="flex-grow">{children}</main>
+          </div>
         </div>
       </body>
     </html>
