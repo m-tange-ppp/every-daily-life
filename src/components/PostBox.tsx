@@ -1,16 +1,10 @@
 import { createPost } from "@/actions/post";
 import React from "react";
 
-type PostBoxProps = {
-  userId: string;
-};
-
-function PostBox({ userId }: PostBoxProps) {
-  const createPostWithUserId = createPost.bind(null, userId);
-
+function PostBox() {
   return (
     <div>
-      <form action={createPostWithUserId} className="flex flex-col gap-2 mb-2">
+      <form action={createPost} className="flex flex-col gap-2 mb-2">
         <textarea
           name="content"
           id="content"

@@ -11,11 +11,10 @@ export default async function Home() {
   if (error || !data?.user) {
     redirect("/login");
   }
-  const userId = data.user.id;
 
   return (
     <div>
-      <PostBox userId={userId} />
+      <PostBox />
       <Timeline />
     </div>
   );
