@@ -29,15 +29,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header>
+        <header className="fixed left-0 top-0">
           <h1 className="text-4xl mb-4">
             <Link href={"/"}>Every Daily Life</Link>
           </h1>
         </header>
-        <div className="container mx-auto">
+        <div className="container mx-auto my-12">
           <div className="flex mx-4">
-            <Sidebar />
-            <main className="flex-grow">{children}</main>
+            <div className="fixed ">
+              <Sidebar />
+            </div>
+            <main className="ml-40 flex-grow">{children}</main>
           </div>
         </div>
       </body>

@@ -1,26 +1,19 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
 
 model User {
-  id        String   @id  @db.Uuid
-  name      String
-  image     String?
-  posts     Post[]
-  likes     Like[]
-
+  id    String  @id @db.Uuid
+  name  String
+  image String?
+  likes Like[]
+  posts Post[]
 }
 
 model Post {
@@ -28,14 +21,14 @@ model Post {
   content   String
   createdAt DateTime @default(now())
   authorId  String   @db.Uuid
-  author    User     @relation(fields: [authorId], references: [id])
   likes     Like[]
+  author    User     @relation(fields: [authorId], references: [id])
 }
 
 model Like {
-  id      Int  @id @default(autoincrement())
-  userId  String @db.Uuid
-  postId  Int
-  user    User @relation(fields: [userId], references: [id])
-  post    Post @relation(fields: [postId], references: [id])
+  id     Int    @id @default(autoincrement())
+  userId String @db.Uuid
+  postId Int
+  post   Post   @relation(fields: [postId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
 }

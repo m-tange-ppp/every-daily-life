@@ -1,12 +1,19 @@
+import { createPost } from "@/actions/post";
 import React from "react";
 
-function PostBox() {
+type PostBoxProps = {
+  userId: string;
+};
+
+function PostBox({ userId }: PostBoxProps) {
+  const createPostWithUserId = createPost.bind(null, userId);
+
   return (
     <div>
-      <form action="" className="flex flex-col gap-2 mb-2">
+      <form action={createPostWithUserId} className="flex flex-col gap-2 mb-2">
         <textarea
-          name="daily-life"
-          id="daily-life"
+          name="content"
+          id="content"
           placeholder="あなたのdaily lifeは？"
           maxLength={100}
           required
