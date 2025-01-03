@@ -6,23 +6,24 @@ import { Prisma } from "@prisma/client";
 
 export async function createPost(formData: FormData) {
   const supabase = await createClient();
-  try {
-    const { data } = await supabase.auth.getUser();
-    const userId = data.user?.id;
 
-    const content = formData.get("content") as string;
+  const { data } = await supabase.auth.getUser();
+  const userId = data.user?.id;
 
-    const postData: Prisma.PostCreateInput = {
-      content: content,
-      author: {
-        connect: {
-          id: userId,
-        },
+  const content = formData.get("content") as string;
+
+  const postData: Prisma.PostCreateInput = {
+    content: content,
+    author: {
+      connect: {
+        id: userId,
       },
-    };
+    },
+  };
 
-    await prisma.post.create({
-      data: postData,
-    });
-  } catch {}
+  await prisma.post.create({
+    data: postData,
+  });
 }
+
+export async function getAllPosts() {}
