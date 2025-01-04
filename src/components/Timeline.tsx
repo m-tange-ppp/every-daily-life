@@ -9,6 +9,10 @@ async function Timeline() {
   await supabase.auth.getUser();
 
   const allPosts = await prisma.post.findMany({
+    include: {
+      author: true,
+      likes: true,
+    },
     orderBy: {
       id: "asc",
     },
@@ -17,7 +21,12 @@ async function Timeline() {
   return (
     <div className="space-y-2">
       {allPosts.map((post, index) => (
-        <PostCard key={index} authorId={post.authorId} content={post.content} />
+        <PostCard
+          key={index}
+          author={post.author.name}
+          content={post.content}
+          createdAt={post.createdAt}
+        />
       ))}
     </div>
   );
