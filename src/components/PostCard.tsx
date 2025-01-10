@@ -17,14 +17,23 @@ async function PostCard({ author, content, createdAt }: PostCardProps) {
   });
 
   return (
-    <div className="border border-black rounded-md">
-      <div className="flex justify-between">
-        <p className="text-xl">{author}</p>
-        <p>{createdAtToString}</p>
-      </div>
-      <div className="p-2 flex flex-col gap-2">
-        <p>{content}</p>
-        <LikeButton />
+    <div className="transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+      <div className="rounded-lg shadow-md p-2 border border-green-100">
+        <div className="flex items-center mb-4">
+          <div className="h-10 w-10 rounded-full bg-gradient-to-r to-green-400 from-emerald-500 flex items-center justify-center">
+            <span className="text-white font-bold">{author[0]}</span>
+          </div>
+          <div className="ml-4">
+            <h3 className="font-bold text-green-900">{author}</h3>
+            <p className="text-sm text-green-600">{createdAtToString}</p>
+          </div>
+        </div>
+        <div className="px-4">
+          <p className="leading-relaxed mb-2">{content}</p>
+          <div className="border-t border-green-200 pt-2">
+            <LikeButton />
+          </div>
+        </div>
       </div>
     </div>
   );

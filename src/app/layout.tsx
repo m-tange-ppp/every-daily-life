@@ -27,19 +27,20 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col h-screen`}
       >
-        <header className="fixed left-0 top-0">
-          <h1 className="text-4xl mb-4">
+        <header className="mb-4">
+          <h1 className="text-4xl">
             <Link href={"/"}>Every Daily Life</Link>
           </h1>
         </header>
-        <div className="container mx-auto my-12">
-          <div className="flex mx-4">
-            <div className="fixed ">
+
+        <div className="container mx-auto overflow-hidden">
+          <div className="flex mx-4 justify-center">
+            <div className="flex-none">
               <Sidebar />
             </div>
-            <main className="ml-40 flex-grow">{children}</main>
+            <main className="flex-grow">{children}</main>
           </div>
         </div>
       </body>

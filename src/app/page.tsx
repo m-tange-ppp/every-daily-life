@@ -9,13 +9,17 @@ export default async function Home() {
   const { data, error } = await supabase.auth.getUser();
 
   if (error || !data?.user) {
-    redirect("/login");
+    redirect("/signin");
   }
 
   return (
-    <div>
-      <PostBox />
-      <Timeline />
+    <div className="flex flex-col h-[calc(100vh-64px)]">
+      <div className="flex-none">
+        <PostBox />
+      </div>
+      <div className="flex-grow overflow-y-auto">
+        <Timeline />
+      </div>
     </div>
   );
 }

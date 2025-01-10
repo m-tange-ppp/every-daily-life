@@ -14,7 +14,7 @@ async function Timeline() {
       likes: true,
     },
     orderBy: {
-      id: "asc",
+      id: "desc",
     },
   });
 

@@ -9,7 +9,7 @@ function Sidebar() {
         <ul className="space-y-2 w-40">
           {/* デバッグ用 */}
           <li>
-            <Link href={"/login"} className="inline-flex items-center gap-2">
+            <Link href={"/signin"} className="inline-flex items-center gap-2">
               <span>ログイン</span>
             </Link>
           </li>

@@ -3,6 +3,8 @@
 import { prisma } from "@/lib/prisma";
 import { createClient } from "@/utils/supabase/server";
 import { Prisma } from "@prisma/client";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export async function createPost(formData: FormData) {
   const supabase = await createClient();
@@ -24,6 +26,7 @@ export async function createPost(formData: FormData) {
   await prisma.post.create({
     data: postData,
   });
-}
 
-export async function getAllPosts() {}
+  revalidatePath("/", "layout");
+  redirect("/");
+}
