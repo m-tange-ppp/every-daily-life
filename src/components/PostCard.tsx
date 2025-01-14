@@ -5,9 +5,12 @@ type PostCardProps = {
   author: string;
   content: string;
   createdAt: Date;
+  likes: {
+    userId: string;
+  }[];
 };
 
-async function PostCard({ author, content, createdAt }: PostCardProps) {
+async function PostCard({ author, content, createdAt, likes }: PostCardProps) {
   const createdAtToString = createdAt.toLocaleString("ja-JP", {
     year: "numeric",
     month: "2-digit",
@@ -31,7 +34,7 @@ async function PostCard({ author, content, createdAt }: PostCardProps) {
         <div className="px-4">
           <p className="leading-relaxed mb-2">{content}</p>
           <div className="border-t border-green-200 pt-2">
-            <LikeButton />
+            <LikeButton initialLiked={false} userId={""} postId={0} />
           </div>
         </div>
       </div>

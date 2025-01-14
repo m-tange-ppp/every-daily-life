@@ -1,4 +1,4 @@
-"use client"; // Error boundaries must be Client Components
+"use client";
 
 import { redirect } from "next/navigation";
 import { useEffect } from "react";
@@ -9,21 +9,36 @@ export default function Error({
   error: Error & { digest?: string };
 }) {
   useEffect(() => {
-    // Log the error to an error reporting service
     console.error(error);
   }, [error]);
 
   return (
     <div>
       <h2>エラーが発生しました</h2>
-      <button
-        onClick={
-          // Attempt to recover by trying to re-render the segment
-          () => redirect("/")
-        }
-      >
-        ホームに戻る
-      </button>
+      <div style={{ margin: "20px 0" }}>
+        <p>
+          <strong>エラー内容:</strong> {error.message}
+        </p>
+        {error.digest && (
+          <p>
+            <strong>エラーID:</strong> {error.digest}
+          </p>
+        )}
+        <p>
+          <strong>スタックトレース:</strong>
+        </p>
+        <pre
+          style={{
+            backgroundColor: "#f5f5f5",
+            padding: "10px",
+            borderRadius: "4px",
+            whiteSpace: "pre-wrap",
+          }}
+        >
+          {error.stack}
+        </pre>
+      </div>
+      <button onClick={() => redirect("/")}>ホームに戻る</button>
     </div>
   );
 }

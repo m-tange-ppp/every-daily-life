@@ -22,6 +22,7 @@ export async function createUser(formData: FormData) {
     email_confirm: true,
     user_metadata: {
       name: formData.get("name") as string,
+      username: formData.get("username") as string,
     },
   };
 

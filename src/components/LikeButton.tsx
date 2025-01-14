@@ -1,12 +1,13 @@
 "use client";
 
+import { likePost, unlikePost } from "@/actions/like";
 import { useState, useTransition } from "react";
 import { FaHeart } from "react-icons/fa";
 
 type LikeButtonProps = {
   initialLiked: boolean;
   userId: string;
-  postId: string;
+  postId: number;
 };
 
 function LikeButton({ initialLiked, userId, postId }: LikeButtonProps) {
